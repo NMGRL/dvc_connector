@@ -18,15 +18,18 @@ from flask import Flask, request
 from dvc import DVC
 
 
-app = Flask('DVCConnector')
+app = Flask(__name__)
 dvc = DVC()
+
+
+@app.route('/')
+def index():
+    return 'Welcome to DVCConnector'
 
 
 @app.route('/github_event', methods=['POST'])
 def handle_github_event():
     if request.method == 'POST':
         dvc.handle(request.json)
-    else:
-        return 'Invalid Method'
 
 # ============= EOF =============================================
