@@ -14,9 +14,8 @@
 # limitations under the License.
 # ===============================================================================
 
-from flask import Flask, request
+from flask import Flask, request, render_template
 from dvc import DVC
-
 
 app = Flask(__name__)
 dvc = DVC()
@@ -24,7 +23,7 @@ dvc = DVC()
 
 @app.route('/')
 def index():
-    return 'Welcome to DVCConnector'
+    return render_template('index.html', logs=dvc.log_list())
 
 
 @app.route('/github_event', methods=['POST'])

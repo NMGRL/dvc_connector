@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h1> Welcome to DVC Connector</h1>
+
+<p> DVC Connector is used to automatically upload "Interpreted Ages" produced by Pychron into NM Geochronology
+    Database</p>
+
+<h2>Activity Log</h2>
+<div style="overflow-y: scroll; height:500px;">
+    <table border="1" class="paleblue">
+        <tr>
+            <th>Date</th>
+            <th>Repository</th>
+            <th>URL</th>
+        </tr>
+
+    {% for log in logs %}
+        <tr>
+            {% for r in log %}
+                <td>{{ r }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+
+{% endblock %}
